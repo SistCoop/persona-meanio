@@ -1,0 +1,13 @@
+{
+  "name": "pkpersona",
+  "version": "0.0.1",
+  "dependencies": {
+    "restangular": "1.4.0",
+    "underscore": "~1.8.2",
+    "angular-ui-grid": "~3.0.0-rc.20",
+    "angular-ui-select": "0.11.2",
+    "sg-sidebar-dropdown": "https://github.com/SistCoop/sg-sidebar-dropdown.git#0.0.3",
+    "sg-iso3166": "https://github.com/SistCoop/sg-iso3166.git#0.0.6",
+    "sg-persona": "https://github.com/SistCoop/sg-persona.git#1.0.2"
+  }
+}

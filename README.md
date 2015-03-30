@@ -1,2 +1,1 @@
-# persona-meanio
-meanio package
+README: pkpersona
