@@ -26,8 +26,6 @@ PersonaMeanio.register(function(app, auth, database) {
 
     PersonaMeanio.aggregateAsset('css', 'personaMeanio.css');
 
-    PersonaMeanio.aggregateAsset('css', 'pkpersona.css');
-
     //sidebar dependences
     PersonaMeanio.aggregateAsset('js', '../lib/angular-recursion/angular-recursion.js');
     PersonaMeanio.aggregateAsset('js', '../lib/sg-sidebar-dropdown/src/sg-sidebar-dropdown.js');
