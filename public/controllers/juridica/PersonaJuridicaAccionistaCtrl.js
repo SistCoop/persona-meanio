@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.pkpersona').controller('AccionistaCtrl', function($scope, $state, SGTipoDocumento, SGPersonaNatural, Notifications){
+angular.module('mean.persona-meanio').controller('AccionistaCtrl', function($scope, $state, SGTipoDocumento, SGPersonaNatural, Notification){
 
     $scope.entradas = {
         tipoDocumento: undefined,
@@ -25,7 +25,7 @@ angular.module('mean.pkpersona').controller('AccionistaCtrl', function($scope, $
         if(!angular.isUndefined($scope.combo.selected.tipoDocumento) && !angular.isUndefined($scope.entradas.numeroDocumento)){
             SGPersonaNatural.$findByTipoNumeroDocumento($scope.combo.selected.tipoDocumento.abreviatura, $scope.entradas.numeroDocumento).then(function(response){
                 if(!response)
-                    Notifications.warn('Persona no encontrada');
+                    Notification.warn('Persona no encontrada');
                 $scope.buscados.persona = response;
             });
         }
@@ -40,13 +40,13 @@ angular.module('mean.pkpersona').controller('AccionistaCtrl', function($scope, $
             };
             $scope.view.persona.$addAccionista(accionista).then(
                 function(data){
-                    Notifications.success('Accionista agregado');
+                    Notification.success('Accionista agregado');
                     $scope.buscados.persona.porcentajeParticipacion = $scope.entradas.porcentaje;
                     $scope.view.persona.accionistas.push($scope.buscados.persona);
                     $scope.view.personaDB.accionistas.push($scope.buscados.persona);
                 },
                 function error(err){
-                    Notifications.error(err.data.message);
+                    Notification.error(err.data.message);
                 }
             );
         }

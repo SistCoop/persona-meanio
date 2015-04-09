@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.pkpersona').controller('PersonaJuridicaDatosPrincipalesCtrl', function($scope, $state, SGCountryCode, SGTipoDocumento, SGTipoEmpresa, SGPersonaJuridica, Notifications){
+angular.module('mean.persona-meanio').controller('PersonaJuridicaDatosPrincipalesCtrl', function($scope, $state, SGCountryCode, SGTipoDocumento, SGTipoEmpresa, SGPersonaJuridica, Notification){
 
     $scope.combo = {
         pais: SGCountryCode.$search().$object,
@@ -20,9 +20,9 @@ angular.module('mean.pkpersona').controller('PersonaJuridicaDatosPrincipalesCtrl
         if(!angular.isUndefined($scope.combo.selected.tipoDocumento) && !angular.isUndefined($scope.view.persona.numeroDocumento)){
             SGPersonaJuridica.$findByTipoNumeroDocumento($scope.combo.selected.tipoDocumento.abreviatura, $scope.view.persona.numeroDocumento).then(function(data){
                 if(!data)
-                    Notifications.info('Documento de identidad disponible.');
+                    Notification.info('Documento de identidad disponible.');
                 else
-                    Notifications.warn('Documento de identidad no disponible');
+                    Notification.warn('Documento de identidad no disponible');
             });
         }
     };

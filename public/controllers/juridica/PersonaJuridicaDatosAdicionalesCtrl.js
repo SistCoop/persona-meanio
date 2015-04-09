@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.pkpersona').controller('PersonaJuridicaDatosAdicionalesCtrl', function($scope, $state){
+angular.module('mean.persona-meanio').controller('PersonaJuridicaDatosAdicionalesCtrl', function($scope, $state){
 
     $scope.goTabRepresentante = function(){
         if($scope.form.$valid){

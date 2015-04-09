@@ -1,5 +1,5 @@
 {
-  "name": "pkpersona",
+  "name": "persona-meanio",
   "version": "0.0.1",
   "dependencies": {
     "restangular": "1.4.0",
@@ -8,6 +8,7 @@
     "angular-ui-select": "0.11.2",
     "sg-sidebar-dropdown": "https://github.com/SistCoop/sg-sidebar-dropdown.git#0.0.3",
     "sg-iso3166": "https://github.com/SistCoop/sg-iso3166.git#0.0.6",
-    "sg-persona": "https://github.com/SistCoop/sg-persona.git#1.0.2"
+    "sg-persona": "https://github.com/SistCoop/sg-persona.git#1.0.2",
+    "angular-ui-notification": "~0.0.5"
   }
 }

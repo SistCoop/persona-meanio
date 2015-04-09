@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.pkpersona').controller('EditarPersonaJuridicaCtrl', function($scope, $state, $modal, SGPersonaJuridica, Notifications){
+angular.module('mean.persona-meanio').controller('EditarPersonaJuridicaCtrl', function($scope, $state, $modal, SGPersonaJuridica, Notification){
 
     $scope.view = {
         persona: undefined,
@@ -21,20 +21,20 @@ angular.module('mean.pkpersona').controller('EditarPersonaJuridicaCtrl', functio
                 $scope.view.persona.$save().then(
                     function(data){
                         $scope.view.personaDB = angular.copy($scope.view.persona);
-                        Notifications.success('Persona actualizada');
+                        Notification.success('Persona actualizada');
                     },
                     function error(err){
-                        Notifications.error(err.data.message);
+                        Notification.error(err.data.message);
                     }
                 );
             };
             SGPersonaJuridica.$findByTipoNumeroDocumento($scope.view.persona.tipoDocumento, $scope.view.persona.numeroDocumento).then(function(data){
                 if(data && data.id === $scope.view.persona.id){
-                    Notifications.info('Documento de identidad disponible');
+                    Notification.info('Documento de identidad disponible');
                     save();
                 }
                 else {
-                    Notifications.warn('Documento de identidad no disponible');
+                    Notification.warn('Documento de identidad no disponible');
                 }
             });
         }

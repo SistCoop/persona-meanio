@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.pkpersona').controller('CrearPersonaJuridicaCtrl', function($scope, $state, SGPersonaJuridica, Notifications){
+angular.module('mean.persona-meanio').controller('CrearPersonaJuridicaCtrl', function($scope, $state, SGPersonaJuridica, Notification){
 
     $scope.view = {
         persona: SGPersonaJuridica.$build()
@@ -17,17 +17,17 @@ angular.module('mean.pkpersona').controller('CrearPersonaJuridicaCtrl', function
         if ($scope.form.$valid) {
 
             if(angular.isUndefined($scope.view.persona.representanteLegal)){
-                Notifications.warn('Representante legal no definido.');
+                Notification.warn('Representante legal no definido.');
                 return;
             }
             if(angular.isUndefined($scope.view.persona.representanteLegal.id)){
-                Notifications.warn('Representante legal no definido.');
+                Notification.warn('Representante legal no definido.');
                 return;
             }
 
             SGPersonaJuridica.$findByTipoNumeroDocumento($scope.view.persona.tipoDocumento, $scope.view.persona.numeroDocumento).then(function(response){
                 if(response) {
-                    Notifications.error('Documento de identidad no disponible');
+                    Notification.error('Documento de identidad no disponible');
                 } else {
                     $scope.save();
                 }
@@ -42,11 +42,11 @@ angular.module('mean.pkpersona').controller('CrearPersonaJuridicaCtrl', function
         };
         $scope.view.persona.$save().then(
             function(response){
-                Notifications.success('Persona creada');
+                Notification.success('Persona creada');
                 $state.go('^.^.editarPersonaJuridica.resumen', {id: response.id});
             },
             function error(err){
-                Notifications.error(err.data.message);
+                Notification.error(err.data.message);
             }
         );
     };

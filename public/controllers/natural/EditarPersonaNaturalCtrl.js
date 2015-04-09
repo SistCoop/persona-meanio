@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.pkpersona').controller('EditarPersonaNaturalCtrl', function($scope, $state, SGPersonaNatural, Notifications){
+angular.module('mean.persona-meanio').controller('EditarPersonaNaturalCtrl', function($scope, $state, SGPersonaNatural, Notification){
 
     $scope.view = {
         persona: undefined,
@@ -19,17 +19,17 @@ angular.module('mean.pkpersona').controller('EditarPersonaNaturalCtrl', function
             var save = function(){
                 $scope.view.persona.$save().then(
                     function(response){
-                        Notifications.success('Persona actualizada');
+                        Notification.success('Persona actualizada');
                         $scope.view.personaDB = angular.copy($scope.view.persona);
                     },
                     function error(err){
-                        Notifications.error(err.data.message);
+                        Notification.error(err.data.message);
                     }
                 );
             };
             SGPersonaNatural.$findByTipoNumeroDocumento($scope.view.persona.tipoDocumento, $scope.view.persona.numeroDocumento).then(function(data){
                 if(data && data.id !== $scope.view.persona.id){
-                    Notifications.error('Documento de identidad no disponible');
+                    Notification.error('Documento de identidad no disponible');
                 }
                 else {
                     save();

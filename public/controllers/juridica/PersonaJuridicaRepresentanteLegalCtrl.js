@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.pkpersona').controller('PersonaJuridicaRepresentanteLegalCtrl', function($scope, $state, SGTipoDocumento, SGPersonaNatural, Notifications){
+angular.module('mean.persona-meanio').controller('PersonaJuridicaRepresentanteLegalCtrl', function($scope, $state, SGTipoDocumento, SGPersonaNatural, Notification){
 
     $scope.representante = {
         tipoDocumento: undefined,
@@ -23,7 +23,7 @@ angular.module('mean.pkpersona').controller('PersonaJuridicaRepresentanteLegalCt
                 if(response)
                     $scope.view.persona.representanteLegal = response;
                 else
-                    Notifications.warn('Persona no encontrada');
+                    Notification.warn('Persona no encontrada');
             });
         }
     };
