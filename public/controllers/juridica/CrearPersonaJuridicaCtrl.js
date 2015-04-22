@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.persona-meanio').controller('CrearPersonaJuridicaCtrl', function($scope, $state, SGPersonaJuridica, Notification){
+angular.module('mean.persona').controller('CrearPersonaJuridicaCtrl', function($scope, $state, SGPersonaJuridica, Notification){
 
     $scope.view = {
         persona: SGPersonaJuridica.$build()

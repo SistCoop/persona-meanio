@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.persona-meanio').controller('EditarPersonaJuridicaCtrl', function($scope, $state, $modal, SGPersonaJuridica, Notification){
+angular.module('mean.persona').controller('EditarPersonaJuridicaCtrl', function($scope, $state, $modal, SGPersonaJuridica, Notification){
 
     $scope.view = {
         persona: undefined,

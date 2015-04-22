@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.persona-meanio').service('$menuItemsPersona', [
+angular.module('mean.persona').service('$menuItemsPersona', [
     function() {
 
         this.menuItems = [];
@@ -87,8 +87,8 @@ angular.module('mean.persona-meanio').service('$menuItemsPersona', [
 
             var productos = this.addItem('Personas', '', 'linecons-user');
 
-            productos.addItem('Naturales', 'personaMeanio.app.personas.buscarPersonaNatural');
-            productos.addItem('Juridicas', 'personaMeanio.app.personas.buscarPersonaJuridica');
+            productos.addItem('Naturales', 'persona.app.personas.buscarPersonaNatural');
+            productos.addItem('Juridicas', 'persona.app.personas.buscarPersonaJuridica');
 
             return this;
         };

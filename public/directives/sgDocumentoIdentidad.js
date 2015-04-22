@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.persona-meanio').directive('sgDocumentoIdentidad',function(TipoDocumento, PersonaNatural, personaConfig, Notifications){
+angular.module('mean.persona').directive('sgDocumentoIdentidad',function(TipoDocumento, PersonaNatural, personaConfig, Notifications){
     return {
         restrict:'E',
         replace: false,

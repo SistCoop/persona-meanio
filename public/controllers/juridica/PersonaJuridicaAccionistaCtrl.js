@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.persona-meanio').controller('AccionistaCtrl', function($scope, $state, SGTipoDocumento, SGPersonaNatural, Notification){
+angular.module('mean.persona').controller('AccionistaCtrl', function($scope, $state, SGTipoDocumento, SGPersonaNatural, Notification){
 
     $scope.entradas = {
         tipoDocumento: undefined,

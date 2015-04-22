@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.persona-meanio').controller('PersonaJuridicaDatosPrincipalesCtrl', function($scope, $state, SGCountryCode, SGTipoDocumento, SGTipoEmpresa, SGPersonaJuridica, Notification){
+angular.module('mean.persona').controller('PersonaJuridicaDatosPrincipalesCtrl', function($scope, $state, SGCountryCode, SGTipoDocumento, SGTipoEmpresa, SGPersonaJuridica, Notification){
 
     $scope.combo = {
         pais: SGCountryCode.$search().$object,

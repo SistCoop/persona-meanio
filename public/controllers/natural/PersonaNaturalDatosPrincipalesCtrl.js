@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.persona-meanio').controller('PersonaNaturalDatosPrincipalesCtrl', function($scope, $state, SGCountryCode, SGSexo, SGEstadoCivil, SGPersonaNatural, SGTipoDocumento, Notification){
+angular.module('mean.persona').controller('PersonaNaturalDatosPrincipalesCtrl', function($scope, $state, SGCountryCode, SGSexo, SGEstadoCivil, SGPersonaNatural, SGTipoDocumento, Notification){
 
     $scope.refreshPage = function(){
         $scope.form.$setPristine();

@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.persona-meanio').controller('BuscarPersonaJuridicaCtrl', function($scope, $state, SGPersonaJuridica){
+angular.module('mean.persona').controller('BuscarPersonaJuridicaCtrl', function($scope, $state, SGPersonaJuridica){
 
     $scope.nuevo = function(){
         $state.go('^.crearPersonaJuridica.datosPrincipales');
