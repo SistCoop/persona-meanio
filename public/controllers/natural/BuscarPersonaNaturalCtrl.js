@@ -9,8 +9,8 @@ angular.module('mean.persona').controller('BuscarPersonaNaturalCtrl', function($
 
     $scope.filterOptions = {
         filterText: undefined,
-        offset: 0,
-        limit: 10
+        firstResult: 0,
+        maxResults: 10
     };
 
     $scope.gridOptions = {

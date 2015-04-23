@@ -6,7 +6,8 @@ angular.module('mean.persona').config(['$stateProvider',
             .state('persona', {
                 abstract: true,
                 url: '/persona',
-                templateUrl: 'persona/views/tpls/layout/body.html'
+                templateUrl: 'persona/views/tpls/layout/body.html',
+                controller: 'PersonaSidebarController'
             })
             .state('persona.home', {
                 url: '/home',
@@ -14,7 +15,7 @@ angular.module('mean.persona').config(['$stateProvider',
             })
             .state('persona.app', {
                 url: '/app',
-                template: '<ui-view></ui-view>'
+                templateUrl: 'persona/views/app.html'
             })
 
             .state('persona.app.personas', {

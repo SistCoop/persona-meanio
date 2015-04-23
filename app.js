@@ -26,6 +26,12 @@ Persona.register(function(app, auth, database) {
 
     Persona.aggregateAsset('css', 'persona.css');
 
+    //angular-sannitize
+    Persona.aggregateAsset('js', '../lib/angular-sanitize/angular-sanitize.js');
+
+    //angular-messages
+    Persona.aggregateAsset('js', '../lib/angular-messages/angular-messages.js');
+
     //sidebar dependences
     Persona.aggregateAsset('js', '../lib/angular-recursion/angular-recursion.js');
     Persona.aggregateAsset('js', '../lib/sg-sidebar-dropdown/src/sg-sidebar-dropdown.js');
@@ -53,6 +59,8 @@ Persona.register(function(app, auth, database) {
 
 
     Persona.angularDependencies([
+        'ngSanitize',
+        'ngMessages',
         'sgSidebarDropdown',
         'ui.grid',
         'ui.grid.edit',
