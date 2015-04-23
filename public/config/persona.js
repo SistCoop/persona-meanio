@@ -10,10 +10,10 @@ angular.module('mean.persona').config(function(sgPersonaProvider) {
     sgPersonaProvider.restUrl = 'http://localhost:8080/persona/rest';
 });
 
-angular.module('mean.persona').controller('PersonaSidebarController', ['$rootScope', '$menuItemsPersona',
-    function($rootScope, $menuItemsPersona) {
+angular.module('mean.persona').controller('PersonaSidebarController', ['$scope', '$menuItemsPersona',
+    function($scope, $menuItemsPersona) {
 
-        $rootScope.$menuItemsAngulr = $menuItemsPersona.prepareSidebarMenu().getAll();
+        $scope.menuItems = $menuItemsPersona.prepareSidebarMenu().getAll();
 
     }
 ]);

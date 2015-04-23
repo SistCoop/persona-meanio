@@ -1,18 +1,13 @@
+<!-- menu -->
+<div class="app-aside hidden-xs bg-black" data-ng-include="'/persona/views/aside.html'" data-ng-controller="PersonaSidebarController"></div>
+<!-- / menu -->
 
-<div class="sidebar-menu toggle-others fixed" data-ng-controller="PersonaSidebarController">
-
-    <div class="sidebar-menu-inner ps-container ps-active-y">
-
-        <ul class="main-menu">
-            <data-sg-sidebar-dropdown open-class="expanded" item="item" data-ng-repeat="item in menuItems"></data-sg-sidebar-dropdown>
-        </ul>
+<!-- content -->
+<div class="app-content">
+    <div ui-butterbar></div>
+    <a href class="off-screen-toggle hide" ui-toggle-class="off-screen" data-target=".app-aside" ></a>
+    <div class="app-content-body fade-in-up" data-ui-view>
 
     </div>
-
 </div>
-
-<div class="main-content">
-
-    <div data-ui-view></div>
-
-</div>
+<!-- /content -->
