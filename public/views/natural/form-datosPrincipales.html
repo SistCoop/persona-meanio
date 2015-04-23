@@ -4,10 +4,10 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="form-group" data-ng-class="{ 'has-error' : form.pais.$invalid && (form.pais.$touched || form.$submitted)}">
-                    <label>Nacionalidad </label>
+                    <label>Nacionalidad</label>
                     <div class="input-group">
                         <span data-ng-bind="combo.selected.pais ? combo.selected.pais.alpha3Code : 'NA'" class="input-group-addon"></span>
-                        <ui-select name="pais" data-ng-model="combo.selected.pais" ui-autofocus required>
+                        <ui-select name="pais" data-ng-model="combo.selected.pais" autofocus required>
                             <ui-select-autoload pk-name="alpha3Code" comparator="view.persona.codigoPais" ignore-case="true"></ui-select-autoload>
                             <ui-select-match placeholder="Seleccione">{{$select.selected.fullNameEn}}</ui-select-match>
                             <ui-select-choices repeat="item in combo.pais | filter: $select.search">
@@ -88,7 +88,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-4" data-data-ng-controller="DateController">
+            <div class="col-sm-4" data-ng-controller="PersonaDateController">
                 <div class="form-group" data-ng-class="{ 'has-error' : form.fechanacimiento.$invalid && (form.fechanacimiento.$touched || form.$submitted)}">
                     <label>Fecha Nacimiento</label>
                     <div class="input-group">

@@ -13,6 +13,11 @@ angular.module('mean.persona').controller('CrearPersonaNaturalCtrl', function($s
     };
     $scope.loadParams();
 
+    $scope.loadDefaultConfiguration = function() {
+        $scope.view.persona.codigoPais = 'PER';
+    };
+    $scope.loadDefaultConfiguration();
+
     $scope.submit = function(){
         if ($scope.form.$valid) {
             var save = function(){

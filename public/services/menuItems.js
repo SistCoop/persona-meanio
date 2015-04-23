@@ -85,10 +85,14 @@ angular.module('mean.persona').service('$menuItemsPersona', [
         {
             this.menuItems = [];
 
-            var productos = this.addItem('Personas', '', 'linecons-user');
+            var personas = this.addItem('Personas', '', 'linecons-user');
 
-            productos.addItem('Naturales', 'persona.app.personas.buscarPersonaNatural');
-            productos.addItem('Juridicas', 'persona.app.personas.buscarPersonaJuridica');
+            personas.addItem('Naturales', 'persona.app.personas.buscarPersonaNatural');
+            personas.addItem('Juridicas', 'persona.app.personas.buscarPersonaJuridica');
+
+            var administracion = this.addItem('Administracion', '', 'linecons-user');
+
+            administracion.addItem('Tipo documento', 'persona.app.administracion.buscarTipoDocumento');
 
             return this;
         };

@@ -21,7 +21,34 @@ angular.module('mean.persona').config(['$stateProvider',
                 url: '/personas',
                 template: '<div ui-view></div>'
             })
+            .state('persona.app.administracion', {
+                url: '/administracion',
+                template: '<div ui-view></div>'
+            })
 
+            //tipoDocumento
+            .state('persona.app.administracion.buscarTipoDocumento', {
+                url: '/tipoDocumento/buscar',
+                templateUrl: 'persona/views/tipoDocumento/form-buscar-tipoDocumento.html',
+                controller: 'BuscarTipoDocumentoCtrl'
+            })
+            .state('persona.app.administracion.crearTipoDocumento', {
+                url: '/tipoDocumento',
+                templateUrl: 'persona/views/tipoDocumento/form-crear-tipoDocumento.html',
+                controller: 'CrearTipoDocumentoCtrl'
+            })
+            .state('persona.app.administracion.editarTipoDocumento', {
+                url: '/tipoDocumento/editar/:id',
+                templateUrl: 'persona/views/tipoDocumento/form-editar-tipoDocumento.html',
+                resolve: {
+                    tipoDocumento: function($state, $stateParams, SGTipoDocumento) {
+                        return SGTipoDocumento.$find($stateParams.id);
+                    }
+                },
+                controller: 'EditarTipoDocumentoCtrl'
+            })
+
+            //Personas
             .state('persona.app.personas.buscarPersonaNatural', {
                 url: '/natural/buscar',
                 templateUrl: 'persona/views/natural/form-buscar-personaNatural.html',

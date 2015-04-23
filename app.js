@@ -32,6 +32,9 @@ Persona.register(function(app, auth, database) {
     //angular-messages
     Persona.aggregateAsset('js', '../lib/angular-messages/angular-messages.js');
 
+    //ng autofocus
+    Persona.aggregateAsset('js', '../lib/ng-autofocus/dist/ng-autofocus.js');
+
     //sidebar dependences
     Persona.aggregateAsset('js', '../lib/angular-recursion/angular-recursion.js');
     Persona.aggregateAsset('js', '../lib/sg-sidebar-dropdown/src/sg-sidebar-dropdown.js');
@@ -40,9 +43,18 @@ Persona.register(function(app, auth, database) {
     Persona.aggregateAsset('js', '../lib/angular-ui-grid/ui-grid.js');
     Persona.aggregateAsset('css', '../lib/angular-ui-grid/ui-grid.css');
 
+    //angular-input-masks
+    Persona.aggregateAsset('js', '../lib/angular-input-masks/angular-input-masks.js');
+
     //ui-select
     Persona.aggregateAsset('js', '../lib/angular-ui-select/dist/select.js');
     Persona.aggregateAsset('css', '../lib/angular-ui-select/dist/select.css');
+
+    //ui-select-utils
+    Persona.aggregateAsset('js', '../lib/angular-ui-select-utils/dist/select.utils.js');
+
+    //ui-select-utils
+    Persona.aggregateAsset('js', '../lib/angular-ui-utils/ui-utils.js');
 
     //restangular
     Persona.aggregateAsset('js', '../lib/underscore/underscore.js');
@@ -61,13 +73,17 @@ Persona.register(function(app, auth, database) {
     Persona.angularDependencies([
         'ngSanitize',
         'ngMessages',
+        'ng-autofocus',
         'sgSidebarDropdown',
         'ui.grid',
         'ui.grid.edit',
         'ui.grid.selection',
         'ui.select',
+        'ui.select.utils',
+        'ui.utils',
         'restangular',
         'ui-notification',
+        'ui.utils.masks',
         'sg-iso3166',
         'sg-persona'
     ]);
