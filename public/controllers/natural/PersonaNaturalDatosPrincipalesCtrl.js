@@ -29,7 +29,7 @@ angular.module('mean.persona').controller('PersonaNaturalDatosPrincipalesCtrl', 
                 if(!data)
                     Notification.info('Documento de identidad disponible');
                 else
-                    Notification.warn('Documento de identidad no disponible');
+                    Notification.warning('Documento de identidad no disponible');
             });
         }
     };
