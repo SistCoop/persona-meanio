@@ -23,7 +23,7 @@ angular.module('mean.persona').controller('BuscarTipoDocumentoCtrl', function($s
             {field: 'denominacion', displayName: 'Denominacion'},
             {field: 'cantidadCaracteres', displayName: 'Num.Caracteres'},
             {field: 'tipoPersona', displayName: 'T.persona'},
-            {field: 'estado', displayName: 'estado'},
+            {field: 'estado', displayName: 'estado', cellFilter: 'si_no : "activo" | uppercase'},
             {
                 name: 'edit',
                 displayName: 'Edit',

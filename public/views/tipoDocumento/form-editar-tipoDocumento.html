@@ -1,83 +1,99 @@
-<div>
-    <div class="bg-light lter b-b wrapper-md ng-scope">
-        <h1 class="m-n font-thin h3">Editar tipo documento</h1>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-sm-12">
-                    <form name="form" data-ng-submit="submit()" novalidate>
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Editar tipo documento</h1>
+</div>
 
-                        <h4><strong>Datos principales</strong> </h4>
+<div class="wrapper-md">
+    <div class="tab-container">
+        <ul class="nav nav-tabs">
+            <li ui-sref-active="active">
+                <a href ui-sref="persona.app.administracion.editarTipoDocumento">
+                    Editar
+                </a>
+            </li>
+            <li class="pull-right">
+                <div class="btn-group">
+                    <button type="button" data-ng-click="desactivar()" class="btn btn-danger">Desactivar</button>
+                </div>
+            </li>
+        </ul>
+        <div class="tab-content">
 
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="form-group" data-ng-class="{ 'has-error' : form.abreviatura.$invalid && (form.abreviatura.$touched || form.$submitted)}">
-                                    <label>Abreviatura</label>
-                                    <input name="abreviatura" type="text" data-ng-model="view.tipoDocumento.abreviatura" data-ng-minlength="1" data-ng-maxlength="20" class="form-control" autofocus required/>
-                                    <div data-ng-messages="form.abreviatura.$error" data-ng-if="form.abreviatura.$touched || form.$submitted">
-                                        <div class="has-error" data-ng-message="required">Ingrese abreviatura.</div>
-                                        <div class="has-error" data-ng-message="minlength">Ingrese abreviatura.</div>
-                                        <div class="has-error" data-ng-message="maxlength">Abreviatura muy extensa, maximo 20 caracteres.</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form name="form" data-ng-submit="submit()" novalidate>
+                            <h4><strong>Datos principales</strong> </h4>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group" data-ng-class="{ 'has-error' : form.abreviatura.$invalid && (form.abreviatura.$touched || form.$submitted)}">
+                                        <label>Abreviatura</label>
+                                        <input name="abreviatura" type="text" data-ng-model="view.tipoDocumento.abreviatura" data-ng-minlength="1" data-ng-maxlength="20" class="form-control" autofocus required/>
+                                        <div data-ng-messages="form.abreviatura.$error" data-ng-if="form.abreviatura.$touched || form.$submitted">
+                                            <div class="has-error" data-ng-message="required">Ingrese abreviatura.</div>
+                                            <div class="has-error" data-ng-message="minlength">Ingrese abreviatura.</div>
+                                            <div class="has-error" data-ng-message="maxlength">Abreviatura muy extensa, maximo 20 caracteres.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group" data-ng-class="{ 'has-error' : form.denominacion.$invalid && (form.denominacion.$touched || form.$submitted)}">
+                                        <label>Denominacion</label>
+                                        <input name="denominacion" type="text" data-ng-model="view.tipoDocumento.denominacion" data-ng-minlength="1" data-ng-maxlength="60" class="form-control" required/>
+                                        <div data-ng-messages="form.denominacion.$error" data-ng-if="form.denominacion.$touched || form.$submitted">
+                                            <div class="has-error" data-ng-message="required">Ingrese denominacion.</div>
+                                            <div class="has-error" data-ng-message="minlength">Ingrese denominacion.</div>
+                                            <div class="has-error" data-ng-message="maxlength">Denominacion muy extensa, maximo 60 caracteres.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group" data-ng-class="{ 'has-error' : form.cantidadCaracteres.$invalid && (form.cantidadCaracteres.$touched || form.$submitted)}">
+                                        <label>Cant. caracteres</label>
+                                        <input name="cantidadCaracteres" type="text" data-ng-model="view.tipoDocumento.cantidadCaracteres" ui-number-mask="0" min="1" max="20" ng-init="1" class="form-control" required />
+                                        <div data-ng-messages="form.cantidadCaracteres.$error" data-ng-if="form.cantidadCaracteres.$touched || form.$submitted">
+                                            <div class="has-error" data-ng-message="required">Ingrese cantidad caracteres.</div>
+                                            <div class="has-error" data-ng-message="min">Minimo 1.</div>
+                                            <div class="has-error" data-ng-message="max">Maximo 20.</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
-                                <div class="form-group" data-ng-class="{ 'has-error' : form.denominacion.$invalid && (form.denominacion.$touched || form.$submitted)}">
-                                    <label>Denominacion</label>
-                                    <input name="denominacion" type="text" data-ng-model="view.tipoDocumento.denominacion" data-ng-minlength="1" data-ng-maxlength="60" class="form-control" required/>
-                                    <div data-ng-messages="form.denominacion.$error" data-ng-if="form.denominacion.$touched || form.$submitted">
-                                        <div class="has-error" data-ng-message="required">Ingrese denominacion.</div>
-                                        <div class="has-error" data-ng-message="minlength">Ingrese denominacion.</div>
-                                        <div class="has-error" data-ng-message="maxlength">Denominacion muy extensa, maximo 60 caracteres.</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group" data-ng-class="{ 'has-error' : form.cantidadCaracteres.$invalid && (form.cantidadCaracteres.$touched || form.$submitted)}">
-                                    <label>Cant. caracteres</label>
-                                    <input name="cantidadCaracteres" type="text" data-ng-model="view.tipoDocumento.cantidadCaracteres" ui-number-mask="0" min="1" max="20" ng-init="1" class="form-control" required />
-                                    <div data-ng-messages="form.cantidadCaracteres.$error" data-ng-if="form.cantidadCaracteres.$touched || form.$submitted">
-                                        <div class="has-error" data-ng-message="required">Ingrese cantidad caracteres.</div>
-                                        <div class="has-error" data-ng-message="min">Minimo 1.</div>
-                                        <div class="has-error" data-ng-message="max">Maximo 20.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="form-group" data-ng-class="{ 'has-error' : form.tipoPersona.$invalid && (form.tipoPersona.$touched || form.$submitted)}">
-                                    <label>tipoPersona</label>
-                                    <ui-select name="tipoPersona" data-ng-model="combo.selected.tipoPersona" required>
-                                        <ui-select-match placeholder="Seleccione">{{$select.selected.denominacion}}</ui-select-match>
-                                        <ui-select-autoload pk-name="denominacion" comparator="view.tipoDocumento.tipoPersona" ignore-case="true"></ui-select-autoload>
-                                        <ui-select-choices repeat="item in combo.tipoPersona | filter: $select.search">
-                                            <div data-ng-bind-html="item.denominacion | highlight: $select.search"></div>
-                                        </ui-select-choices>
-                                    </ui-select>
-                                    <div data-ng-messages="form.tipoPersona.$error" data-ng-if="form.tipoPersona.$touched || form.$submitted">
-                                        <div class="has-error" data-ng-message="required">Ingrese tipo persona.</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label>Estado</label>
-                                    <h4>Activo</h4>
-                                </div>
-                            </div>
-                        </div>
 
-                        <p>
-                            <button type="submit" class="btn btn-primary" ladda="control.block" data-style="expand-right">Guardar</button>
-                            <button type="button" class="btn btn-default" ui-sref="^.buscarTipoDocumento">Cancelar</button>
-                        </p>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group" data-ng-class="{ 'has-error' : form.tipoPersona.$invalid && (form.tipoPersona.$touched || form.$submitted)}">
+                                        <label>tipoPersona</label>
+                                        <ui-select name="tipoPersona" data-ng-model="combo.selected.tipoPersona" required>
+                                            <ui-select-match placeholder="Seleccione">{{$select.selected.denominacion}}</ui-select-match>
+                                            <ui-select-autoload pk-name="denominacion" comparator="view.tipoDocumento.tipoPersona" ignore-case="true"></ui-select-autoload>
+                                            <ui-select-choices repeat="item in combo.tipoPersona | filter: $select.search">
+                                                <div data-ng-bind-html="item.denominacion | highlight: $select.search"></div>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        <div data-ng-messages="form.tipoPersona.$error" data-ng-if="form.tipoPersona.$touched || form.$submitted">
+                                            <div class="has-error" data-ng-message="required">Ingrese tipo persona.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Estado</label>
+                                        <h4>Activo</h4>
+                                    </div>
+                                </div>
+                            </div>
 
-                    </form>
+                            <p>
+                                <button type="submit" class="btn btn-primary" ladda="control.block" data-style="expand-right">Guardar</button>
+                                <button type="button" class="btn btn-default" ui-sref="^.buscarTipoDocumento">Cancelar</button>
+                            </p>
+
+                        </form>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
+
