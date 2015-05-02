@@ -1,7 +1,8 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.persona').controller('AccionistaCtrl', function($scope, $state, SGTipoDocumento, SGPersonaNatural, Notification){
+angular.module('mean.persona').controller('EditarPersonaJuridica_Accionistas', function(
+    $scope, $state, SGTipoDocumento, SGPersonaNatural, toastr){
 
     $scope.entradas = {
         tipoDocumento: undefined,
@@ -25,7 +26,7 @@ angular.module('mean.persona').controller('AccionistaCtrl', function($scope, $st
         if(!angular.isUndefined($scope.combo.selected.tipoDocumento) && !angular.isUndefined($scope.entradas.numeroDocumento)){
             SGPersonaNatural.$findByTipoNumeroDocumento($scope.combo.selected.tipoDocumento.abreviatura, $scope.entradas.numeroDocumento).then(function(response){
                 if(!response)
-                    Notification.warn('Persona no encontrada');
+                    toastr.warning('Persona no encontrada');
                 $scope.buscados.persona = response;
             });
         }
@@ -40,13 +41,13 @@ angular.module('mean.persona').controller('AccionistaCtrl', function($scope, $st
             };
             $scope.view.persona.$addAccionista(accionista).then(
                 function(data){
-                    Notification.success('Accionista agregado');
+                    toastr.success('Accionista agregado');
                     $scope.buscados.persona.porcentajeParticipacion = $scope.entradas.porcentaje;
                     $scope.view.persona.accionistas.push($scope.buscados.persona);
                     $scope.view.personaDB.accionistas.push($scope.buscados.persona);
                 },
                 function error(err){
-                    Notification.error(err.data.message);
+                    toastr.error(err.data.message);
                 }
             );
         }

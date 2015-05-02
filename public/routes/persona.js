@@ -6,7 +6,7 @@ angular.module('mean.persona').config(['$stateProvider',
             .state('persona', {
                 abstract: true,
                 url: '/persona',
-                templateUrl: 'persona/views/tpls/layout/body.html'
+                templateUrl: 'persona/views/_body.html'
             })
             .state('persona.home', {
                 url: '/home',
@@ -50,21 +50,13 @@ angular.module('mean.persona').config(['$stateProvider',
 
             //Personas
             .state('persona.app.personas.buscarPersonaNatural', {
-                url: '/natural/buscar',
+                url: '/buscarPersonaNatural',
                 templateUrl: 'persona/views/natural/form-buscar-personaNatural.html',
                 controller: 'BuscarPersonaNaturalCtrl'
             }).state('persona.app.personas.crearPersonaNatural', {
                 url: '/natural?tipoDocumento&numeroDocumento',
                 templateUrl: 'persona/views/natural/form-crear-personaNatural.html',
-                controller: function($scope, $stateParams) {
-                    $scope.params = {};
-                    $scope.params.tipoDocumento = $stateParams.tipoDocumento;
-                    $scope.params.numeroDocumento = $stateParams.numeroDocumento;
-                }
-            }).state('persona.app.personas.crearPersonaNatural.datosPrincipales', {
-                url: '/principal',
-                templateUrl: 'persona/views/natural/form-datosPrincipales.html',
-                controller: 'PersonaNaturalDatosPrincipalesCtrl'
+                controller: 'CrearPersonaNaturalCtrl'
             }).state('persona.app.personas.editarPersonaNatural', {
                 url: '/natural/{id:[0-9]{1,8}}',
                 templateUrl: 'persona/views/natural/form-editar-personaNatural.html',
@@ -73,22 +65,18 @@ angular.module('mean.persona').config(['$stateProvider',
                         return SGPersonaNatural.$find($stateParams.id);
                     }
                 },
-                controller: function($scope, $stateParams, personaNatural) {
-                    $scope.params = {};
-                    $scope.params.id = $stateParams.id;
-                    $scope.params.object = personaNatural;
-                }
+                controller: 'EditarPersonaNaturalCtrl'
             }).state('persona.app.personas.editarPersonaNatural.resumen', {
                 url: '/resumen',
-                templateUrl: 'persona/views/natural/form-resumen.html',
+                templateUrl: 'persona/views/natural/form-editar-resumen.html',
                 controller: 'PersonaNaturalResumenCtrl'
             }).state('persona.app.personas.editarPersonaNatural.datosPrincipales', {
                 url: '/principal',
-                templateUrl: 'persona/views/natural/form-datosPrincipales.html',
+                templateUrl: 'persona/views/natural/form-editar-datosPrincipales.html',
                 controller: 'PersonaNaturalDatosPrincipalesCtrl'
             }).state('persona.app.personas.editarPersonaNatural.datosAdicionales', {
                 url: '/adicionales',
-                templateUrl: 'persona/views/natural/form-datosAdicionales.html',
+                templateUrl: 'persona/views/natural/form-editar-datosAdicionales.html',
                 controller: 'PersonaNaturalDatosAdicionalesCtrl'
             })
 
@@ -99,52 +87,46 @@ angular.module('mean.persona').config(['$stateProvider',
             }).state('persona.app.personas.crearPersonaJuridica', {
                 url: '/juridica?tipoDocumento&numeroDocumento',
                 templateUrl: 'persona/views/juridica/form-crear-personaJuridica.html',
-                controller: function($scope, $stateParams) {
-                    $scope.params = {};
-                    $scope.params.tipoDocumento = $stateParams.tipoDocumento;
-                    $scope.params.numeroDocumento = $stateParams.numeroDocumento;
-                }
+                controller: 'CrearPersonaJuridicaCtrl'
             }).state('persona.app.personas.crearPersonaJuridica.datosPrincipales', {
                 url: '/principal',
-                templateUrl: 'persona/views/juridica/form-datosPrincipales.html',
-                controller: 'PersonaJuridicaDatosPrincipalesCtrl'
+                templateUrl: 'persona/views/juridica/form-crear-datosPrincipales.html',
+                controller: 'CrearPersonaJuridica_DatosPrincipalesCtrl'
             }).state('persona.app.personas.crearPersonaJuridica.representante', {
                 url: '/representante',
-                templateUrl: 'persona/views/juridica/form-representante.html',
-                controller: 'PersonaJuridicaRepresentanteLegalCtrl'
-            }).state('persona.app.personas.editarPersonaJuridica', {
+                templateUrl: 'persona/views/juridica/form-crear-representante.html',
+                controller: 'CrearPersonaJuridica_RepresentanteCtrl'
+            })
+
+            .state('persona.app.personas.editarPersonaJuridica', {
                 url: '/juridica/{id:[0-9]{1,8}}',
                 templateUrl: 'persona/views/juridica/form-editar-personaJuridica.html',
                 resolve: {
-                    personaJuridica: function($state, $stateParams, PersonaJuridica) {
-                        return PersonaJuridica.$find($stateParams.id);
+                    personaJuridica: function($state, $stateParams, SGPersonaJuridica) {
+                        return SGPersonaJuridica.$find($stateParams.id);
                     }
                 },
-                controller: function($scope, $stateParams, personaJuridica) {
-                    $scope.params = {};
-                    $scope.params.id = $stateParams.id;
-                    $scope.params.object = personaJuridica;
-                }
+                controller: 'EditarPersonaJuridicaCtrl'
             }).state('persona.app.personas.editarPersonaJuridica.resumen', {
                 url: '/resumen',
-                templateUrl: 'persona/views/juridica/form-resumen.html',
-                controller: 'PersonaJuridicaResumenCtrl'
+                templateUrl: 'persona/views/juridica/form-editar-resumen.html',
+                controller: 'EditarPersonaJuridica_ResumenCtrl'
             }).state('persona.app.personas.editarPersonaJuridica.datosPrincipales', {
                 url: '/principal',
-                templateUrl: 'persona/views/juridica/form-datosPrincipales.html',
-                controller: 'PersonaJuridicaDatosPrincipalesCtrl'
+                templateUrl: 'persona/views/juridica/form-editar-datosPrincipales.html',
+                controller: 'EditarPersonaJuridica_DatosPrincipalesCtrl'
             }).state('persona.app.personas.editarPersonaJuridica.datosAdicionales', {
                 url: '/adicionales',
-                templateUrl: 'persona/views/juridica/form-datosAdicionales.html',
-                controller: 'PersonaJuridicaDatosAdicionalesCtrl'
+                templateUrl: 'persona/views/juridica/form-editar-datosAdicionales.html',
+                controller: 'EditarPersonaJuridica_DatosAdicionalesCtrl'
             }).state('persona.app.personas.editarPersonaJuridica.representante', {
                 url: '/representante',
-                templateUrl: 'persona/views/juridica/form-representante.html',
-                controller: 'PersonaJuridicaRepresentanteLegalCtrl'
+                templateUrl: 'persona/views/juridica/form-editar-representante.html',
+                controller: 'EditarPersonaJuridica_RepresentanteCtrl'
             }).state('persona.app.personas.editarPersonaJuridica.crearAccionista', {
                 url: '/accionista',
-                templateUrl: 'persona/views/juridica/form-accionista.html',
-                controller: 'PersonaJuridicaDatosAdicionalesCtrl'
+                templateUrl: 'persona/views/juridica/form-editar-accionistas.html',
+                controller: 'EditarPersonaJuridica_Accionistas'
             });
     }
 ]);

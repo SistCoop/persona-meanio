@@ -2,35 +2,41 @@
     <h1 class="m-n font-thin h3">Editar persona natural</h1>
 </div>
 
-<div class="wrapper-md" data-ng-controller="EditarPersonaNaturalCtrl">
-    <div class="tab-container ng-isolate-scope" ng-init="steps={percent:20, step1:true, step2:false, step3:false}">
-        <ul class="nav nav-tabs">
-            <li ui-sref-active="active">
-                <a href ui-sref=".resumen">
-                    Resumen
-                </a>
-            </li>
-            <li ui-sref-active="active">
-                <a href ui-sref=".datosPrincipales">
-                    Datos principales
-                </a>
-            </li>
-            <li ui-sref-active="active">
-                <a href ui-sref=".datosAdicionales">
-                    Datos adicionales
-                </a>
-            </li>
-            <li class="pull-right">
-                <div class="btn-group">
-                    <button type="button" data-ng-click="desactivar()" class="btn btn-danger">Desactivar</button>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div>
+
+            <div class="tab-container">
+                <ul class="nav nav-tabs">
+                    <li ui-sref-active="active">
+                        <a href ui-sref=".resumen">
+                            Resumen
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a href ui-sref=".datosPrincipales">
+                            Datos principales
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a href ui-sref=".datosAdicionales">
+                            Datos adicionales
+                        </a>
+                    </li>
+                    <li class="pull-right">
+                        <div class="btn-group">
+                            <button type="button" data-ng-click="desactivar()" class="btn btn-danger">Desactivar</button>
+                        </div>
+                    </li>
+                </ul>
+                <div class="tab-pane">
+                    <br/>
+                    <div ui-view></div>
                 </div>
-            </li>
-        </ul>
-        <div class="tab-content">
-            <form name="form" data-ng-submit="submit()" novalidate>
-                <div ui-view></div>
-            </form>
+            </div>
+
         </div>
     </div>
 </div>
+
 

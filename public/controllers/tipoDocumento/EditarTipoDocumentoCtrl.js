@@ -1,7 +1,8 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.persona').controller('EditarTipoDocumentoCtrl', function($scope, $state, tipoDocumento, SGTipoDocumento, SGTipoPersona, Notification){
+angular.module('mean.persona').controller('EditarTipoDocumentoCtrl', function(
+    $scope, $state, tipoDocumento, SGTipoDocumento, SGTipoPersona, toastr){
 
     $scope.view = {
         tipoDocumento: tipoDocumento
@@ -18,10 +19,10 @@ angular.module('mean.persona').controller('EditarTipoDocumentoCtrl', function($s
         if ($scope.form.$valid) {
             $scope.view.tipoDocumento.$save().then(
                 function(response){
-                    Notification.success('Tipo documento actualizado');
+                    toastr.success('Tipo documento actualizado');
                 },
                 function error(err){
-                    Notification.error(err.data.message);
+                    toastr.error(err.data.message);
                 }
             );
         }

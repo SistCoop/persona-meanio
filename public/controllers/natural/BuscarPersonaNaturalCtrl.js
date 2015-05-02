@@ -4,7 +4,7 @@
 angular.module('mean.persona').controller('BuscarPersonaNaturalCtrl', function($scope, $state, SGPersonaNatural){
 
     $scope.nuevo = function(){
-        $state.go('^.crearPersonaNatural.datosPrincipales');
+        $state.go('^.crearPersonaNatural');
     };
 
     $scope.filterOptions = {

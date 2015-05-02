@@ -1,12 +1,26 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.persona').controller('PersonaNaturalDatosAdicionalesCtrl', function($scope){
+angular.module('mean.persona').controller('PersonaNaturalDatosAdicionalesCtrl', function(
+    $scope, personaNatural, toastr){
 
-    $scope.refreshPage = function(){
-        $scope.form.$setPristine();
+    $scope.view = {
+        persona: personaNatural
     };
-    $scope.refreshPage();
+
+    $scope.submit = function(){
+        if ($scope.form.$valid) {
+            $scope.view.persona.$save().then(
+                function(response){
+                    toastr.success('Persona actualizada', 'Success');
+                    $scope.view.personaDB = angular.copy($scope.view.persona);
+                },
+                function error(err){
+                    toastr.error(err.data.message, 'Error');
+                }
+            );
+        }
+    };
 
 });
        

@@ -33,7 +33,7 @@ angular.module('mean.persona').controller('BuscarPersonaJuridicaCtrl', function(
     };
     $scope.gridActions = {
         edit: function(row){
-            $state.go('^.editarPersonaJuridica.datosPrincipales', {id: row.id});
+            $state.go('^.editarPersonaJuridica.resumen', {id: row.id});
         }
     };
 

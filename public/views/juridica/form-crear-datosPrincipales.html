@@ -6,11 +6,11 @@
                 <label>Nacionalidad </label>
                 <div class="input-group">
                     <span data-ng-bind="combo.selected.pais ? combo.selected.pais.alpha3Code : 'NA'" class="input-group-addon"></span>
-                    <ui-select name="pais" data-ng-model="combo.selected.pais" theme="bootstrap" ui-autofocus required>
+                    <ui-select name="pais" data-ng-model="combo.selected.pais" autofocus required>
                         <ui-select-autoload pk-name="alpha3Code" comparator="view.persona.codigoPais" ignore-case="true"></ui-select-autoload>
-                        <ui-select-match placeholder="Seleccione">{{$select.selected.fullName}}</ui-select-match>
+                        <ui-select-match placeholder="Seleccione">{{$select.selected.fullNameEn}}</ui-select-match>
                         <ui-select-choices repeat="item in combo.pais | filter: $select.search">
-                            <div data-ng-bind-html="item.fullName | highlight: $select.search"></div>
+                            <div data-ng-bind-html="item.fullNameEn | highlight: $select.search"></div>
                             <small data-ng-bind-html="item.alpha3Code | highlight: $select.search"></small>
                         </ui-select-choices>
                     </ui-select>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-4" data-ng-controller="DateController">
+        <div class="col-sm-4" data-ng-controller="PersonaDateController">
             <div class="form-group" data-ng-class="{ 'has-error' : form.fechaConstitucion.$invalid && (form.fechaConstitucion.$touched || form.$submitted)}">
                 <label>Fecha constitucion</label>
                 <div class="input-group">
@@ -129,12 +129,8 @@
             </div>
         </div>
     </div>
-    <p data-ng-if="!view.persona.id">
-        <button type="button" class="btn btn-white" ui-sref="app.administracion.personas.buscarPersonaJuridica">Cancelar</button>
-        <button type="button" class="btn btn-white" data-ng-click="goTabRepresentante()">Siguiente »</button>
-    </p>
-    <p data-ng-if="view.persona.id">
-        <button type="submit" class="btn btn-primary" ladda="control.block" data-style="expand-right">Guardar</button>
-        <button type="button" class="btn btn-white" ui-sref="^.resumen">Cancelar</button>
+    <p>
+        <button type="button" class="btn btn-default" ui-sref="persona.app.personas.buscarPersonaJuridica">Cancelar</button>
+        <button type="button" class="btn btn-default" data-ng-click="goTabRepresentante()">Siguiente »</button>
     </p>
 </div>

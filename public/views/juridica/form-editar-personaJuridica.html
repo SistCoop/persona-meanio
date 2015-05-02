@@ -1,53 +1,50 @@
-<div class="page-title full-width">
-    <div class="title-env">
-        <h1 class="title">Editar persona juridica</h1>
-        <p class="description">Puede editar los datos de la persona juridica.</p>
-    </div>
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Editar persona juridica</h1>
 </div>
 
-<div class="form-wizard" data-ng-controller="EditarPersonaJuridicaCtrl">
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div>
 
-    <ul class="tabs">
-        <li ui-sref-active="active">
-            <a href ui-sref=".resumen">
-                Resumen
-            </a>
-        </li>
-        <li ui-sref-active="active">
-            <a href ui-sref=".datosPrincipales">
-                Datos principales
-            </a>
-        </li>
-        <li ui-sref-active="active">
-            <a href ui-sref=".datosAdicionales">
-                Datos adicionales
-            </a>
-        </li>
-        <li ui-sref-active="active">
-            <a href ui-sref=".representante">
-                Representante legal
-            </a>
-        </li>
-        <li ui-sref-active="active">
-            <a href ui-sref=".crearAccionista">
-                Nuevo accionista
-            </a>
-        </li>
-        <li sg-data-keep="{module: 'PERSONA', rol: ['ADMIN']}">
-            <div class="btn-group ">
-                <button type="button" data-ng-click="desactivar()" class="btn btn-danger" style="margin-bottom: 0px;">Desactivar</button>
+            <div class="tab-container">
+                <ul class="nav nav-tabs">
+                    <li ui-sref-active="active">
+                        <a href ui-sref=".resumen">
+                            Resumen
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a href ui-sref=".datosPrincipales">
+                            Datos principales
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a href ui-sref=".datosAdicionales">
+                            Datos adicionales
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a href ui-sref=".representante">
+                            Representante legal
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a href ui-sref=".crearAccionista">
+                            Nuevo accionista
+                        </a>
+                    </li>
+                    <li class="pull-right">
+                        <div class="btn-group">
+                            <button type="button" data-ng-click="desactivar()" class="btn btn-danger">Desactivar</button>
+                        </div>
+                    </li>
+                </ul>
+                <div class="tab-pane">
+                    <br/>
+                    <div ui-view></div>
+                </div>
             </div>
-        </li>
-    </ul>
-
-    <div class="tab-content no-margin">
-        <div class="tab-pane with-bg active" >
-
-            <form name="form" data-ng-submit="submit()" novalidate>
-                <div ui-view></div>
-            </form>
 
         </div>
     </div>
-
 </div>
