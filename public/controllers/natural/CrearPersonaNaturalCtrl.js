@@ -38,9 +38,9 @@ angular.module('mean.persona').controller('CrearPersonaNaturalCtrl', function(
         if(!angular.isUndefined($scope.combo.selected.tipoDocumento) && !angular.isUndefined($scope.view.persona.numeroDocumento)){
             SGPersonaNatural.$findByTipoNumeroDocumento($scope.combo.selected.tipoDocumento.abreviatura, $scope.view.persona.numeroDocumento).then(function(data){
                 if(!data)
-                    toastr.info('Documento de identidad disponible', 'Info');
+                    toastr.info('Documento de identidad disponible');
                 else
-                    toastr.warning('Documento de identidad no disponible', 'Warning');
+                    toastr.warning('Documento de identidad no disponible');
             });
         }
     };
