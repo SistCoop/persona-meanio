@@ -52,11 +52,11 @@ angular.module('mean.persona').config(['$stateProvider',
             .state('persona.app.personas.buscarPersonaNatural', {
                 url: '/buscarPersonaNatural',
                 templateUrl: 'persona/views/natural/form-buscar-personaNatural.html',
-                controller: 'BuscarPersonaNaturalCtrl'
+                controller: 'Persona.BuscarPersonaNaturalController'
             }).state('persona.app.personas.crearPersonaNatural', {
                 url: '/natural?tipoDocumento&numeroDocumento',
                 templateUrl: 'persona/views/natural/form-crear-personaNatural.html',
-                controller: 'CrearPersonaNaturalCtrl'
+                controller: 'Persona.CrearPersonaNaturalController'
             }).state('persona.app.personas.editarPersonaNatural', {
                 url: '/natural/{id:[0-9]{1,8}}',
                 templateUrl: 'persona/views/natural/form-editar-personaNatural.html',
@@ -65,19 +65,19 @@ angular.module('mean.persona').config(['$stateProvider',
                         return SGPersonaNatural.$find($stateParams.id);
                     }
                 },
-                controller: 'EditarPersonaNaturalCtrl'
+                controller: 'Persona.EditarPersonaNaturalController'
             }).state('persona.app.personas.editarPersonaNatural.resumen', {
                 url: '/resumen',
                 templateUrl: 'persona/views/natural/form-editar-resumen.html',
-                controller: 'PersonaNaturalResumenCtrl'
+                controller: 'Persona.EditarPersonaNatural.ResumenController'
             }).state('persona.app.personas.editarPersonaNatural.datosPrincipales', {
                 url: '/principal',
                 templateUrl: 'persona/views/natural/form-editar-datosPrincipales.html',
-                controller: 'PersonaNaturalDatosPrincipalesCtrl'
+                controller: 'Persona.EditarPersonaNatural.DatosPrincipalesController'
             }).state('persona.app.personas.editarPersonaNatural.datosAdicionales', {
                 url: '/adicionales',
                 templateUrl: 'persona/views/natural/form-editar-datosAdicionales.html',
-                controller: 'PersonaNaturalDatosAdicionalesCtrl'
+                controller: 'Persona.EditarPersonaNatural.DatosAdicionalesController'
             })
 
             .state('persona.app.personas.buscarPersonaJuridica', {

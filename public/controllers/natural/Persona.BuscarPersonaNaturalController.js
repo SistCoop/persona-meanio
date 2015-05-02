@@ -1,7 +1,8 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.persona').controller('BuscarPersonaNaturalCtrl', function($scope, $state, SGPersonaNatural){
+angular.module('mean.persona').controller('Persona.BuscarPersonaNaturalController', function(
+    $scope, $state, SGPersonaNatural){
 
     $scope.nuevo = function(){
         $state.go('^.crearPersonaNatural');
@@ -41,4 +42,5 @@ angular.module('mean.persona').controller('BuscarPersonaNaturalCtrl', function($
     $scope.search = function(){
         $scope.gridOptions.data = SGPersonaNatural.$search($scope.filterOptions).$object;
     };
+
 });
