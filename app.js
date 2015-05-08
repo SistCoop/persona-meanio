@@ -24,7 +24,7 @@ Persona.register(function(app, auth, database) {
         menu: 'main'
     });
 
-    Persona.aggregateAsset('css', 'persona.css');
+    //Persona.aggregateAsset('css', 'persona.css');
 
     return Persona;
 });
