@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('mean.persona').config(['$stateProvider',
-    function($stateProvider) {
+    function ($stateProvider) {
 
         // Check if user has role
-        var checkUserRole = function(role, $q, $timeout, $http, $location, Auth) {
+        var checkUserRole = function (role, $q, $timeout, $http, $location, Auth) {
 
             // Initialize a new promise
             var deferred = $q.defer();
@@ -54,7 +54,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 templateUrl: 'persona/views/tipoDocumento/form-buscar-tipoDocumento.html',
                 controller: 'BuscarTipoDocumentoCtrl',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('PUBLIC', $q, $timeout, $http, $location, Auth)
                     }
                 }
@@ -64,7 +64,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 templateUrl: 'persona/views/tipoDocumento/form-crear-tipoDocumento.html',
                 controller: 'CrearTipoDocumentoCtrl',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('ADMIN', $q, $timeout, $http, $location, Auth)
                     }
                 }
@@ -73,10 +73,10 @@ angular.module('mean.persona').config(['$stateProvider',
                 url: '/tipoDocumento/editar/:id',
                 templateUrl: 'persona/views/tipoDocumento/form-editar-tipoDocumento.html',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('ADMIN', $q, $timeout, $http, $location, Auth)
                     },
-                    tipoDocumento: function($state, $stateParams, SGTipoDocumento) {
+                    tipoDocumento: function ($state, $stateParams, SGTipoDocumento) {
                         return SGTipoDocumento.$find($stateParams.id);
                     }
                 },
@@ -89,7 +89,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 templateUrl: 'persona/views/natural/form-buscar-personaNatural.html',
                 controller: 'Persona.BuscarPersonaNaturalController',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('PUBLIC', $q, $timeout, $http, $location, Auth)
                     }
                 }
@@ -98,7 +98,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 templateUrl: 'persona/views/natural/form-crear-personaNatural.html',
                 controller: 'Persona.CrearPersonaNaturalController',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
                     }
                 }
@@ -106,10 +106,10 @@ angular.module('mean.persona').config(['$stateProvider',
                 url: '/natural/{id:[0-9]{1,8}}',
                 templateUrl: 'persona/views/natural/form-editar-personaNatural.html',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('PUBLIC', $q, $timeout, $http, $location, Auth)
                     },
-                    personaNatural: function($state, $stateParams, SGPersonaNatural) {
+                    personaNatural: function ($state, $stateParams, SGPersonaNatural) {
                         return SGPersonaNatural.$find($stateParams.id);
                     }
                 },
@@ -119,7 +119,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 templateUrl: 'persona/views/natural/form-editar-resumen.html',
                 controller: 'Persona.EditarPersonaNatural.ResumenController',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('PUBLIC', $q, $timeout, $http, $location, Auth)
                     }
                 }
@@ -128,7 +128,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 templateUrl: 'persona/views/natural/form-editar-datosPrincipales.html',
                 controller: 'Persona.EditarPersonaNatural.DatosPrincipalesController',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
                     }
                 }
@@ -137,7 +137,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 templateUrl: 'persona/views/natural/form-editar-datosAdicionales.html',
                 controller: 'Persona.EditarPersonaNatural.DatosAdicionalesController',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
                     }
                 }
@@ -148,7 +148,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 templateUrl: 'persona/views/juridica/form-buscar-personaJuridica.html',
                 controller: 'BuscarPersonaJuridicaCtrl',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('PUBLIC', $q, $timeout, $http, $location, Auth)
                     }
                 }
@@ -157,7 +157,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 templateUrl: 'persona/views/juridica/form-crear-personaJuridica.html',
                 controller: 'CrearPersonaJuridicaCtrl',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
                     }
                 }
@@ -166,7 +166,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 templateUrl: 'persona/views/juridica/form-crear-datosPrincipales.html',
                 controller: 'CrearPersonaJuridica_DatosPrincipalesCtrl',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
                     }
                 }
@@ -175,7 +175,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 templateUrl: 'persona/views/juridica/form-crear-representante.html',
                 controller: 'CrearPersonaJuridica_RepresentanteCtrl',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
                     }
                 }
@@ -185,10 +185,10 @@ angular.module('mean.persona').config(['$stateProvider',
                 url: '/juridica/{id:[0-9]{1,8}}',
                 templateUrl: 'persona/views/juridica/form-editar-personaJuridica.html',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('PUBLIC', $q, $timeout, $http, $location, Auth)
                     },
-                    personaJuridica: function($state, $stateParams, SGPersonaJuridica) {
+                    personaJuridica: function ($state, $stateParams, SGPersonaJuridica) {
                         return SGPersonaJuridica.$find($stateParams.id);
                     }
                 },
@@ -198,7 +198,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 templateUrl: 'persona/views/juridica/form-editar-resumen.html',
                 controller: 'EditarPersonaJuridica_ResumenCtrl',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('PUBLIC', $q, $timeout, $http, $location, Auth)
                     }
                 }
@@ -207,7 +207,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 templateUrl: 'persona/views/juridica/form-editar-datosPrincipales.html',
                 controller: 'EditarPersonaJuridica_DatosPrincipalesCtrl',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
                     }
                 }
@@ -216,7 +216,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 templateUrl: 'persona/views/juridica/form-editar-datosAdicionales.html',
                 controller: 'EditarPersonaJuridica_DatosAdicionalesCtrl',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
                     }
                 }
@@ -225,7 +225,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 templateUrl: 'persona/views/juridica/form-editar-representante.html',
                 controller: 'EditarPersonaJuridica_RepresentanteCtrl',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
                     }
                 }
@@ -234,7 +234,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 templateUrl: 'persona/views/juridica/form-editar-accionistas.html',
                 controller: 'EditarPersonaJuridica_Accionistas',
                 resolve: {
-                    loggedin: function($q, $timeout, $http, $location, Auth) {
+                    loggedin: function ($q, $timeout, $http, $location, Auth) {
                         return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
                     }
                 }
