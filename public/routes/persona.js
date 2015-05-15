@@ -9,12 +9,12 @@ angular.module('mean.persona').config(['$stateProvider',
             // Initialize a new promise
             var deferred = $q.defer();
 
-            // Authenticated
+            // ver-personas
             if (Auth.authz.hasResourceRole(role, 'persona')) {
                 $timeout(deferred.resolve);
             }
 
-            // Not Authenticated
+            // Not ver-personas
             else {
                 $timeout(deferred.reject);
                 //$location.url('/auth/login');
@@ -28,7 +28,8 @@ angular.module('mean.persona').config(['$stateProvider',
             .state('persona', {
                 abstract: true,
                 url: '/persona',
-                templateUrl: 'persona/views/_body.html'
+                templateUrl: 'persona/views/_body.html',
+                controller: 'PersonaController'
             })
             .state('persona.home', {
                 url: '/home',
@@ -50,37 +51,37 @@ angular.module('mean.persona').config(['$stateProvider',
 
             //tipoDocumento
             .state('persona.app.administracion.buscarTipoDocumento', {
-                url: '/tipoDocumento/buscar',
+                url: '/buscarTipoDocumentos',
                 templateUrl: 'persona/views/tipoDocumento/form-buscar-tipoDocumento.html',
-                controller: 'BuscarTipoDocumentoCtrl',
+                controller: 'Persona.BuscarTipoDocumentoController',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('PUBLIC', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-documentos', $q, $timeout, $http, $location, Auth)
                     }
                 }
             })
             .state('persona.app.administracion.crearTipoDocumento', {
                 url: '/tipoDocumento',
                 templateUrl: 'persona/views/tipoDocumento/form-crear-tipoDocumento.html',
-                controller: 'CrearTipoDocumentoCtrl',
+                controller: 'Persona.CrearTipoDocumentoController',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('ADMIN', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-documentos', $q, $timeout, $http, $location, Auth)
                     }
                 }
             })
             .state('persona.app.administracion.editarTipoDocumento', {
-                url: '/tipoDocumento/editar/:id',
+                url: '/tipoDocumento/:id',
                 templateUrl: 'persona/views/tipoDocumento/form-editar-tipoDocumento.html',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('ADMIN', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-documentos', $q, $timeout, $http, $location, Auth)
                     },
                     tipoDocumento: function ($state, $stateParams, SGTipoDocumento) {
                         return SGTipoDocumento.$find($stateParams.id);
                     }
                 },
-                controller: 'EditarTipoDocumentoCtrl'
+                controller: 'Persona.EditarTipoDocumentoController'
             })
 
             //Personas
@@ -90,7 +91,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 controller: 'Persona.BuscarPersonaNaturalController',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('PUBLIC', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-personas', $q, $timeout, $http, $location, Auth)
                     }
                 }
             }).state('persona.app.personas.crearPersonaNatural', {
@@ -99,7 +100,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 controller: 'Persona.CrearPersonaNaturalController',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-personas', $q, $timeout, $http, $location, Auth)
                     }
                 }
             }).state('persona.app.personas.editarPersonaNatural', {
@@ -107,7 +108,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 templateUrl: 'persona/views/natural/form-editar-personaNatural.html',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('PUBLIC', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-personas', $q, $timeout, $http, $location, Auth)
                     },
                     personaNatural: function ($state, $stateParams, SGPersonaNatural) {
                         return SGPersonaNatural.$find($stateParams.id);
@@ -120,7 +121,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 controller: 'Persona.EditarPersonaNatural.ResumenController',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('PUBLIC', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-personas', $q, $timeout, $http, $location, Auth)
                     }
                 }
             }).state('persona.app.personas.editarPersonaNatural.datosPrincipales', {
@@ -129,7 +130,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 controller: 'Persona.EditarPersonaNatural.DatosPrincipalesController',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-personas', $q, $timeout, $http, $location, Auth)
                     }
                 }
             }).state('persona.app.personas.editarPersonaNatural.datosAdicionales', {
@@ -138,7 +139,7 @@ angular.module('mean.persona').config(['$stateProvider',
                 controller: 'Persona.EditarPersonaNatural.DatosAdicionalesController',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-personas', $q, $timeout, $http, $location, Auth)
                     }
                 }
             })
@@ -146,37 +147,37 @@ angular.module('mean.persona').config(['$stateProvider',
             .state('persona.app.personas.buscarPersonaJuridica', {
                 url: '/juridica/buscar',
                 templateUrl: 'persona/views/juridica/form-buscar-personaJuridica.html',
-                controller: 'BuscarPersonaJuridicaCtrl',
+                controller: 'Persona.BuscarPersonaJuridicaController',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('PUBLIC', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-personas', $q, $timeout, $http, $location, Auth)
                     }
                 }
             }).state('persona.app.personas.crearPersonaJuridica', {
                 url: '/juridica?tipoDocumento&numeroDocumento',
                 templateUrl: 'persona/views/juridica/form-crear-personaJuridica.html',
-                controller: 'CrearPersonaJuridicaCtrl',
+                controller: 'Persona.CrearPersonaJuridicaController',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-personas', $q, $timeout, $http, $location, Auth)
                     }
                 }
             }).state('persona.app.personas.crearPersonaJuridica.datosPrincipales', {
                 url: '/principal',
                 templateUrl: 'persona/views/juridica/form-crear-datosPrincipales.html',
-                controller: 'CrearPersonaJuridica_DatosPrincipalesCtrl',
+                controller: 'Persona.CrearPersonaJuridica.DatosPrincipalesController',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-personas', $q, $timeout, $http, $location, Auth)
                     }
                 }
             }).state('persona.app.personas.crearPersonaJuridica.representante', {
                 url: '/representante',
                 templateUrl: 'persona/views/juridica/form-crear-representante.html',
-                controller: 'CrearPersonaJuridica_RepresentanteCtrl',
+                controller: 'Persona.CrearPersonaJuridica.RepresentanteController',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-personas', $q, $timeout, $http, $location, Auth)
                     }
                 }
             })
@@ -186,56 +187,56 @@ angular.module('mean.persona').config(['$stateProvider',
                 templateUrl: 'persona/views/juridica/form-editar-personaJuridica.html',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('PUBLIC', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-personas', $q, $timeout, $http, $location, Auth)
                     },
                     personaJuridica: function ($state, $stateParams, SGPersonaJuridica) {
                         return SGPersonaJuridica.$find($stateParams.id);
                     }
                 },
-                controller: 'EditarPersonaJuridicaCtrl'
+                controller: 'Persona.EditarPersonaJuridicaController'
             }).state('persona.app.personas.editarPersonaJuridica.resumen', {
                 url: '/resumen',
                 templateUrl: 'persona/views/juridica/form-editar-resumen.html',
-                controller: 'EditarPersonaJuridica_ResumenCtrl',
+                controller: 'Persona.EditarPersonaJuridica.ResumenController',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('PUBLIC', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-personas', $q, $timeout, $http, $location, Auth)
                     }
                 }
             }).state('persona.app.personas.editarPersonaJuridica.datosPrincipales', {
                 url: '/principal',
                 templateUrl: 'persona/views/juridica/form-editar-datosPrincipales.html',
-                controller: 'EditarPersonaJuridica_DatosPrincipalesCtrl',
+                controller: 'Persona.EditarPersonaJuridica.DatosPrincipalesController',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-personas', $q, $timeout, $http, $location, Auth)
                     }
                 }
             }).state('persona.app.personas.editarPersonaJuridica.datosAdicionales', {
                 url: '/adicionales',
                 templateUrl: 'persona/views/juridica/form-editar-datosAdicionales.html',
-                controller: 'EditarPersonaJuridica_DatosAdicionalesCtrl',
+                controller: 'Persona.EditarPersonaJuridica.DatosAdicionalesController',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-personas', $q, $timeout, $http, $location, Auth)
                     }
                 }
             }).state('persona.app.personas.editarPersonaJuridica.representante', {
                 url: '/representante',
                 templateUrl: 'persona/views/juridica/form-editar-representante.html',
-                controller: 'EditarPersonaJuridica_RepresentanteCtrl',
+                controller: 'Persona.EditarPersonaJuridica.RepresentanteController',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-personas', $q, $timeout, $http, $location, Auth)
                     }
                 }
             }).state('persona.app.personas.editarPersonaJuridica.crearAccionista', {
                 url: '/accionista',
                 templateUrl: 'persona/views/juridica/form-editar-accionistas.html',
-                controller: 'EditarPersonaJuridica_Accionistas',
+                controller: 'Persona.EditarPersonaJuridica.AccionistasController',
                 resolve: {
                     loggedin: function ($q, $timeout, $http, $location, Auth) {
-                        return checkUserRole('AUTHENTICATED', $q, $timeout, $http, $location, Auth)
+                        return checkUserRole('ver-personas', $q, $timeout, $http, $location, Auth)
                     }
                 }
             });

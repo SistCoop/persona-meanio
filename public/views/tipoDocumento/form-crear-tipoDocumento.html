@@ -7,16 +7,17 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-12">
-                    <form name="form" data-ng-submit="submit()" novalidate>
+
+                    <form name="form" data-ng-submit="submit()" sg-read-only="!access.administrarDocumentos" novalidate>
 
                         <h4><strong>Datos principales</strong> </h4>
 
                         <div class="row">
                             <div class="col-sm-4">
-                                <div class="form-group" data-ng-class="{ 'has-error' : form.abreviatura.$invalid && (form.abreviatura.$touched || form.$submitted)}">
+                                <div class="form-group" data-ng-class="{ 'has-error' : form.abreviatura.$invalid && form.abreviatura.$dirty }">
                                     <label>Abreviatura</label>
                                     <input name="abreviatura" type="text" data-ng-model="view.tipoDocumento.abreviatura" data-ng-minlength="1" data-ng-maxlength="20" class="form-control" autofocus required/>
-                                    <div data-ng-messages="form.abreviatura.$error" data-ng-if="form.abreviatura.$touched || form.$submitted">
+                                    <div data-ng-messages="form.abreviatura.$error" data-ng-if="form.abreviatura.$dirty">
                                         <div class="has-error" data-ng-message="required">Ingrese abreviatura.</div>
                                         <div class="has-error" data-ng-message="minlength">Ingrese abreviatura.</div>
                                         <div class="has-error" data-ng-message="maxlength">Abreviatura muy extensa, maximo 20 caracteres.</div>
@@ -24,10 +25,10 @@
                                 </div>
                             </div>
                             <div class="col-sm-4">
-                                <div class="form-group" data-ng-class="{ 'has-error' : form.denominacion.$invalid && (form.denominacion.$touched || form.$submitted)}">
+                                <div class="form-group" data-ng-class="{ 'has-error' : form.denominacion.$invalid && form.denominacion.$dirty }">
                                     <label>Denominacion</label>
                                     <input name="denominacion" type="text" data-ng-model="view.tipoDocumento.denominacion" data-ng-minlength="1" data-ng-maxlength="60" class="form-control" required/>
-                                    <div data-ng-messages="form.denominacion.$error" data-ng-if="form.denominacion.$touched || form.$submitted">
+                                    <div data-ng-messages="form.denominacion.$error" data-ng-if="form.denominacion.$dirty">
                                         <div class="has-error" data-ng-message="required">Ingrese denominacion.</div>
                                         <div class="has-error" data-ng-message="minlength">Ingrese denominacion.</div>
                                         <div class="has-error" data-ng-message="maxlength">Denominacion muy extensa, maximo 60 caracteres.</div>
@@ -51,7 +52,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group" data-ng-class="{ 'has-error' : form.tipoPersona.$invalid && (form.tipoPersona.$touched || form.$submitted)}">
                                     <label>tipoPersona</label>
-                                    <ui-select name="tipoPersona" data-ng-model="combo.selected.tipoPersona" required>
+                                    <ui-select name="tipoPersona" data-ng-model="combo.selected.tipoPersona" ng-disabled="!access.administrarDocumentos" required>
                                         <ui-select-match placeholder="Seleccione">{{$select.selected.denominacion}}</ui-select-match>
                                         <ui-select-autoload pk-name="denominacion" comparator="view.tipoDocumento.tipoPersona" ignore-case="true"></ui-select-autoload>
                                         <ui-select-choices repeat="item in combo.tipoPersona | filter: $select.search">
@@ -77,6 +78,7 @@
                         </p>
 
                     </form>
+
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean.persona').service('$menuItemsPersona', [
-    function() {
+angular.module('mean.persona').service('$menuItemsPersona', ['Auth',
+    function (Auth) {
 
         this.menuItems = [];
 
@@ -20,9 +20,8 @@ angular.module('mean.persona').service('$menuItemsPersona', [
 
             menuItems: [],
 
-            setLabel: function(label, color, hideWhenCollapsed)
-            {
-                if(typeof hideWhenCollapsed === 'undefined')
+            setLabel: function (label, color, hideWhenCollapsed) {
+                if (typeof hideWhenCollapsed === 'undefined')
                     hideWhenCollapsed = true;
 
                 this.label = {
@@ -34,8 +33,7 @@ angular.module('mean.persona').service('$menuItemsPersona', [
                 return this;
             },
 
-            addItem: function(title, link, icon)
-            {
+            addItem: function (title, link, icon) {
                 var parent = this,
                     item = angular.extend(angular.copy(menuItemObj), {
                         parent: parent,
@@ -45,12 +43,11 @@ angular.module('mean.persona').service('$menuItemsPersona', [
                         icon: icon
                     });
 
-                if(item.link)
-                {
-                    if(item.link.match(/^\./))
+                if (item.link) {
+                    if (item.link.match(/^\./))
                         item.link = parent.link + item.link.substring(1, link.length);
 
-                    if(item.link.match(/^-/))
+                    if (item.link.match(/^-/))
                         item.link = parent.link + '-' + item.link.substring(2, link.length);
 
                     item.state = $menuItemsRef.toStatePath(item.link);
@@ -62,8 +59,7 @@ angular.module('mean.persona').service('$menuItemsPersona', [
             }
         };
 
-        this.addItem = function(title, link, icon)
-        {
+        this.addItem = function (title, link, icon) {
             var item = angular.extend(angular.copy(menuItemObj), {
                 title: title,
                 link: link,
@@ -76,34 +72,38 @@ angular.module('mean.persona').service('$menuItemsPersona', [
             return item;
         };
 
-        this.getAll = function()
-        {
+        this.getAll = function () {
             return this.menuItems;
         };
 
-        this.prepareSidebarMenu = function()
-        {
+        this.prepareSidebarMenu = function () {
             this.menuItems = [];
 
-            var personas = this.addItem('Personas', '', 'linecons-user');
+            var rolesSession = [];
 
-            personas.addItem('Naturales', 'persona.app.personas.buscarPersonaNatural');
-            personas.addItem('Juridicas', 'persona.app.personas.buscarPersonaJuridica');
+            if (Auth.authz.resourceAccess.persona) {
+                rolesSession = Auth.authz.resourceAccess.persona.roles;
+            }
 
-            var administracion = this.addItem('Administracion', '', 'linecons-user');
+            if (rolesSession.indexOf('ver-personas') != -1) {
+                var personas = this.addItem('Personas', '');
+                personas.addItem('Naturales', 'persona.app.personas.buscarPersonaNatural');
+                personas.addItem('Juridicas', 'persona.app.personas.buscarPersonaJuridica');
+            }
 
-            administracion.addItem('Tipo documento', 'persona.app.administracion.buscarTipoDocumento');
+            if (rolesSession.indexOf('ver-documentos') != -1) {
+                var administracion = this.addItem('Administracion', '');
+                administracion.addItem('Tipo documento', 'persona.app.administracion.buscarTipoDocumento');
+            }
 
             return this;
         };
 
-        this.instantiate = function()
-        {
-            return angular.copy( this );
+        this.instantiate = function () {
+            return angular.copy(this);
         };
 
-        this.toStatePath = function(path)
-        {
+        this.toStatePath = function (path) {
             return path.replace(/\//g, '.').replace(/^\./, '');
         };
 

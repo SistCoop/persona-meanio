@@ -1,11 +1,11 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.persona').controller('EditarTipoDocumentoCtrl', function(
-    $scope, $state, tipoDocumento, SGTipoDocumento, SGTipoPersona, toastr){
+angular.module('mean.persona').controller('Persona.CrearTipoDocumentoController', function(
+    $scope, $state, SGTipoDocumento, SGTipoPersona, toastr){
 
     $scope.view = {
-        tipoDocumento: tipoDocumento
+        tipoDocumento: SGTipoDocumento.$build()
     };
 
     $scope.combo = {
@@ -19,7 +19,8 @@ angular.module('mean.persona').controller('EditarTipoDocumentoCtrl', function(
         if ($scope.form.$valid) {
             $scope.view.tipoDocumento.$save().then(
                 function(response){
-                    toastr.success('Tipo documento actualizado');
+                    toastr.success('Tipo documento creado');
+                    $state.go('^.editarTipoDocumento', {id: $scope.view.tipoDocumento.abreviatura});
                 },
                 function error(err){
                     toastr.error(err.data.message);
@@ -27,4 +28,6 @@ angular.module('mean.persona').controller('EditarTipoDocumentoCtrl', function(
             );
         }
     };
+
 });
+       

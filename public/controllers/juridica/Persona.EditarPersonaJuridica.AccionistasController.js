@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.persona').controller('EditarPersonaJuridica_Accionistas', function(
+angular.module('mean.persona').controller('Persona.EditarPersonaJuridica.AccionistasController', function(
     $scope, $state, SGTipoDocumento, SGPersonaNatural, toastr){
 
     $scope.entradas = {

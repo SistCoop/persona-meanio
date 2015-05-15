@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.persona').controller('BuscarTipoDocumentoCtrl', function($scope, $state, SGTipoDocumento){
+angular.module('mean.persona').controller('Persona.BuscarTipoDocumentoController', function($scope, $state, SGTipoDocumento){
 
     $scope.nuevo = function(){
         $state.go('^.crearTipoDocumento');
