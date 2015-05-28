@@ -45,7 +45,7 @@ angular.module('mean.persona').controller('Persona.CrearPersonaNaturalController
         }
     };
 
-    $scope.submit = function(){
+    $scope.save = function(){
         if ($scope.form.$valid) {
             var save = function(){
                 $scope.view.persona.$save().then(

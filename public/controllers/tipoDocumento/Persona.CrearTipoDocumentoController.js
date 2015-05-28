@@ -15,7 +15,7 @@ angular.module('mean.persona').controller('Persona.CrearTipoDocumentoController'
         tipoPersona: undefined
     };
 
-    $scope.submit = function(){
+    $scope.save = function(){
         if ($scope.form.$valid) {
             $scope.view.tipoDocumento.$save().then(
                 function(response){

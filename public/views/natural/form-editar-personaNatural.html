@@ -1,6 +1,4 @@
-<div class="bg-light lter b-b wrapper-md">
-    <h1 class="m-n font-thin h3">Editar persona natural</h1>
-</div>
+<h1>Editar persona natural</h1>
 
 <div class="panel panel-default">
     <div class="panel-body">
@@ -23,7 +21,7 @@
                             Datos adicionales
                         </a>
                     </li>
-                    <li class="pull-right">
+                    <li class="pull-right" ng-if="access.eliminarPersonas">
                         <div class="btn-group">
                             <button type="button" data-ng-click="desactivar()" class="btn btn-danger">Desactivar</button>
                         </div>

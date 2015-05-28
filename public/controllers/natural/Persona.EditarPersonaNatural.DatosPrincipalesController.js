@@ -19,7 +19,7 @@ angular.module('mean.persona').controller('Persona.EditarPersonaNatural.DatosPri
         estadoCivil: undefined
     };
 
-    $scope.submit = function(){
+    $scope.save = function(){
         if ($scope.form.$valid) {
             $scope.view.persona.$save().then(
                 function(response){
